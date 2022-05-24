@@ -583,7 +583,7 @@ func (c *vcsClient) IsDisableStatusDetails(ctx context.Context) bool {
 	if c.vcsProject != nil {
 		return c.vcsProject.Options.DisableStatusDetails
 	}
-	return true
+	return false
 }
 
 func (c *vcsClient) SetStatus(ctx context.Context, event sdk.Event, disableStatusDetails bool) error {
