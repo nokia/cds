@@ -3,6 +3,8 @@ package migrate
 import (
 	"context"
 	"database/sql"
+	"math/rand"
+	"time"
 
 	"github.com/go-gorp/gorp"
 	"github.com/ovh/cds/engine/api/application"
@@ -18,6 +20,9 @@ func ApplicationVCSStrategies(ctx context.Context, dbFunc func() *gorp.DbMap) er
 	if err != nil {
 		return err
 	}
+
+	rand.Seed(time.Now().UnixNano())
+	rand.Shuffle(len(appIDs), func(i, j int) { appIDs[i], appIDs[j] = appIDs[j], appIDs[i] })
 
 	for _, appID := range appIDs {
 		tx, err := dbFunc().Begin()
@@ -38,6 +43,10 @@ func ApplicationVCSStrategies(ctx context.Context, dbFunc func() *gorp.DbMap) er
 		if err != nil {
 			log.ErrorWithStackTrace(ctx, err)
 			_ = tx.Rollback()
+			continue
+		}
+
+		if app.RepositoryStrategy.ConnectionType != "" {
 			continue
 		}
 
