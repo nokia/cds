@@ -551,6 +551,9 @@ func (a *API) Serve(ctx context.Context) error {
 	migrate.Add(ctx, sdk.Migration{Name: "ArtifactoryIntegration", Release: "0.49.0", Blocker: true, Automatic: true, ExecFunc: func(ctx context.Context) error {
 		return migrate.ArtifactoryIntegration(ctx, a.DBConnectionFactory.GetDBMap(gorpmapping.Mapper))
 	}})
+	migrate.Add(ctx, sdk.Migration{Name: "ApplicationVCSStrategies", Release: "0.49.0", Blocker: false, Automatic: true, ExecFunc: func(ctx context.Context) error {
+		return migrate.ApplicationVCSStrategies(ctx, a.DBConnectionFactory.GetDBMap(gorpmapping.Mapper))
+	}})
 
 	isFreshInstall, errF := version.IsFreshInstall(a.mustDB())
 	if errF != nil {
