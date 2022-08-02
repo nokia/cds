@@ -75,7 +75,7 @@ func ApplicationVCSStrategies(ctx context.Context, dbFunc func() *gorp.DbMap) er
 func getApplicationWithVCSStrategyFromLatestRuns(ctx context.Context, tx gorpmapper.SqlExecutorWithTx, appID int64) (*sdk.Application, error) {
 	var selectWRIds []int64
 
-	_, err := tx.Select(&selectWRIds, "SELECT distinct workflow_run_id FROM workflow_node_run WHERE application_id = $1 ORDER BY start DESC LIMIT 20", appID)
+	_, err := tx.Select(&selectWRIds, "SELECT distinct workflow_run_id FROM workflow_node_run WHERE application_id = $1 ORDER BY workflow_run_id DESC LIMIT 20", appID)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			log.Error(ctx, "No workflow run found for application %d", appID)
