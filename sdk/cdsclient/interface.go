@@ -309,6 +309,8 @@ type WorkerClient interface {
 	WorkerModelSecretList(groupName, name string) (sdk.WorkerModelSecrets, error)
 	WorkerRegister(ctx context.Context, authToken string, form sdk.WorkerRegistrationForm) (*sdk.Worker, bool, error)
 	WorkerSetStatus(ctx context.Context, status string) error
+
+	WorkerModelTemplateList(ctx context.Context, projKey string, vcsIdentifier string, repoIdentifier string, filter *WorkerModelTemplateFilter) ([]sdk.WorkerModelTemplate, error)
 	CDNClient
 }
 

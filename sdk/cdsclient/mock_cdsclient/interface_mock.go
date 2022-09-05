@@ -2894,31 +2894,31 @@ func (mr *MockProjectClientMockRecorder) VariableListEncrypt(projectKey interfac
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "VariableListEncrypt", reflect.TypeOf((*MockProjectClient)(nil).VariableListEncrypt), projectKey)
 }
 
-// MockRbacClient is a mock of RBACClient interface.
-type MockRbacClient struct {
+// MockRBACClient is a mock of RBACClient interface.
+type MockRBACClient struct {
 	ctrl     *gomock.Controller
-	recorder *MockRbacClientMockRecorder
+	recorder *MockRBACClientMockRecorder
 }
 
-// MockRbacClientMockRecorder is the mock recorder for MockRbacClient.
-type MockRbacClientMockRecorder struct {
-	mock *MockRbacClient
+// MockRBACClientMockRecorder is the mock recorder for MockRBACClient.
+type MockRBACClientMockRecorder struct {
+	mock *MockRBACClient
 }
 
-// NewMockRbacClient creates a new mock instance.
-func NewMockRbacClient(ctrl *gomock.Controller) *MockRbacClient {
-	mock := &MockRbacClient{ctrl: ctrl}
-	mock.recorder = &MockRbacClientMockRecorder{mock}
+// NewMockRBACClient creates a new mock instance.
+func NewMockRBACClient(ctrl *gomock.Controller) *MockRBACClient {
+	mock := &MockRBACClient{ctrl: ctrl}
+	mock.recorder = &MockRBACClientMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockRbacClient) EXPECT() *MockRbacClientMockRecorder {
+func (m *MockRBACClient) EXPECT() *MockRBACClientMockRecorder {
 	return m.recorder
 }
 
-// RbacImport mocks base method.
-func (m *MockRbacClient) RBACImport(ctx context.Context, content io.Reader, mods ...cdsclient.RequestModifier) (sdk.RBAC, error) {
+// RBACImport mocks base method.
+func (m *MockRBACClient) RBACImport(ctx context.Context, content io.Reader, mods ...cdsclient.RequestModifier) (sdk.RBAC, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, content}
 	for _, a := range mods {
@@ -2930,11 +2930,11 @@ func (m *MockRbacClient) RBACImport(ctx context.Context, content io.Reader, mods
 	return ret0, ret1
 }
 
-// RbacImport indicates an expected call of RbacImport.
-func (mr *MockRbacClientMockRecorder) RbacImport(ctx, content interface{}, mods ...interface{}) *gomock.Call {
+// RBACImport indicates an expected call of RBACImport.
+func (mr *MockRBACClientMockRecorder) RBACImport(ctx, content interface{}, mods ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, content}, mods...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACImport", reflect.TypeOf((*MockRbacClient)(nil).RBACImport), varargs...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACImport", reflect.TypeOf((*MockRBACClient)(nil).RBACImport), varargs...)
 }
 
 // MockProjectKeysClient is a mock of ProjectKeysClient interface.
@@ -3864,6 +3864,21 @@ func (m *MockWorkerClient) WorkerModelSpawnError(groupName, name string, info sd
 func (mr *MockWorkerClientMockRecorder) WorkerModelSpawnError(groupName, name, info interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WorkerModelSpawnError", reflect.TypeOf((*MockWorkerClient)(nil).WorkerModelSpawnError), groupName, name, info)
+}
+
+// WorkerModelTemplateList mocks base method.
+func (m *MockWorkerClient) WorkerModelTemplateList(ctx context.Context, projKey, vcsIdentifier, repoIdentifier string, filter *cdsclient.WorkerModelTemplateFilter) ([]sdk.WorkerModelTemplate, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "WorkerModelTemplateList", ctx, projKey, vcsIdentifier, repoIdentifier, filter)
+	ret0, _ := ret[0].([]sdk.WorkerModelTemplate)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// WorkerModelTemplateList indicates an expected call of WorkerModelTemplateList.
+func (mr *MockWorkerClientMockRecorder) WorkerModelTemplateList(ctx, projKey, vcsIdentifier, repoIdentifier, filter interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WorkerModelTemplateList", reflect.TypeOf((*MockWorkerClient)(nil).WorkerModelTemplateList), ctx, projKey, vcsIdentifier, repoIdentifier, filter)
 }
 
 // WorkerRefresh mocks base method.
@@ -7523,7 +7538,7 @@ func (mr *MockInterfaceMockRecorder) QueueWorkflowRunResultsRelease(ctx, permJob
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "QueueWorkflowRunResultsRelease", reflect.TypeOf((*MockInterface)(nil).QueueWorkflowRunResultsRelease), ctx, permJobID)
 }
 
-// RbacImport mocks base method.
+// RBACImport mocks base method.
 func (m *MockInterface) RBACImport(ctx context.Context, content io.Reader, mods ...cdsclient.RequestModifier) (sdk.RBAC, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, content}
@@ -7536,8 +7551,8 @@ func (m *MockInterface) RBACImport(ctx context.Context, content io.Reader, mods 
 	return ret0, ret1
 }
 
-// RbacImport indicates an expected call of RbacImport.
-func (mr *MockInterfaceMockRecorder) RbacImport(ctx, content interface{}, mods ...interface{}) *gomock.Call {
+// RBACImport indicates an expected call of RBACImport.
+func (mr *MockInterfaceMockRecorder) RBACImport(ctx, content interface{}, mods ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, content}, mods...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RBACImport", reflect.TypeOf((*MockInterface)(nil).RBACImport), varargs...)
@@ -8467,6 +8482,21 @@ func (m *MockInterface) WorkerModelSpawnError(groupName, name string, info sdk.S
 func (mr *MockInterfaceMockRecorder) WorkerModelSpawnError(groupName, name, info interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WorkerModelSpawnError", reflect.TypeOf((*MockInterface)(nil).WorkerModelSpawnError), groupName, name, info)
+}
+
+// WorkerModelTemplateList mocks base method.
+func (m *MockInterface) WorkerModelTemplateList(ctx context.Context, projKey, vcsIdentifier, repoIdentifier string, filter *cdsclient.WorkerModelTemplateFilter) ([]sdk.WorkerModelTemplate, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "WorkerModelTemplateList", ctx, projKey, vcsIdentifier, repoIdentifier, filter)
+	ret0, _ := ret[0].([]sdk.WorkerModelTemplate)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// WorkerModelTemplateList indicates an expected call of WorkerModelTemplateList.
+func (mr *MockInterfaceMockRecorder) WorkerModelTemplateList(ctx, projKey, vcsIdentifier, repoIdentifier, filter interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WorkerModelTemplateList", reflect.TypeOf((*MockInterface)(nil).WorkerModelTemplateList), ctx, projKey, vcsIdentifier, repoIdentifier, filter)
 }
 
 // WorkerRefresh mocks base method.
@@ -9854,6 +9884,21 @@ func (m *MockWorkerInterface) WorkerModelSpawnError(groupName, name string, info
 func (mr *MockWorkerInterfaceMockRecorder) WorkerModelSpawnError(groupName, name, info interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WorkerModelSpawnError", reflect.TypeOf((*MockWorkerInterface)(nil).WorkerModelSpawnError), groupName, name, info)
+}
+
+// WorkerModelTemplateList mocks base method.
+func (m *MockWorkerInterface) WorkerModelTemplateList(ctx context.Context, projKey, vcsIdentifier, repoIdentifier string, filter *cdsclient.WorkerModelTemplateFilter) ([]sdk.WorkerModelTemplate, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "WorkerModelTemplateList", ctx, projKey, vcsIdentifier, repoIdentifier, filter)
+	ret0, _ := ret[0].([]sdk.WorkerModelTemplate)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// WorkerModelTemplateList indicates an expected call of WorkerModelTemplateList.
+func (mr *MockWorkerInterfaceMockRecorder) WorkerModelTemplateList(ctx, projKey, vcsIdentifier, repoIdentifier, filter interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WorkerModelTemplateList", reflect.TypeOf((*MockWorkerInterface)(nil).WorkerModelTemplateList), ctx, projKey, vcsIdentifier, repoIdentifier, filter)
 }
 
 // WorkerRefresh mocks base method.
